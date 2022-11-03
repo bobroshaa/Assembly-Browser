@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Assembly_Browser"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid x:Name="Grid">
+        <Button x:Name="ButtonChoose"  Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20" Content="Выбрать сборку" />
+        <Button x:Name="ButtonClear"  Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 60" Content="Очистить" />
+        <TreeView x:Name="TreeView" Width="370" Height="310" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20"></TreeView>
     </Grid>
 </Window>
