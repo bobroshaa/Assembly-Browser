@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Assembly_Browser
@@ -6,14 +7,14 @@ namespace Assembly_Browser
     public class AssemblyBrowser : INotifyPropertyChanged
     {
         private string _path;
-
-        public string Path
+        private List<Node> _types;
+        public List<Node> Types
         {
-            get { return _path;}
+            get { return _types; }
             set
             {
-                _path = value;
-                OnPropertyChanged("Path");
+                _types = value;
+                OnPropertyChanged("Types");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -9,6 +10,7 @@ namespace Assembly_Browser
     {
         IFileService fileService;
         IDialogService dialogService;
+        public AssemblyBrowser assemblyBrowser;
         
         private RelayCommand openCommand;
         public RelayCommand OpenCommand
@@ -20,10 +22,11 @@ namespace Assembly_Browser
                        {
                            try
                            {
-                               if (dialogService.OpenFileDialog() == true)
+                               if (dialogService.OpenFileDialog())
                                {
-                                   var assemblyTree = fileService.Open(dialogService.FilePath);
-                                   foreach (var type in assemblyTree)
+                                   var assembly = new AssemblyBrowser();
+                                   assembly.Types = fileService.Open(dialogService.FilePath);
+                                   foreach (var type in assembly.Types)
                                    {
                                        
                                    }
@@ -37,6 +40,16 @@ namespace Assembly_Browser
                        }));
             }
             
+        }
+        private List<Node> _types;
+        public List<Node> Types
+        {
+            get { return _types; }
+            set
+            {
+                _types = value;
+                OnPropertyChanged("Types");
+            }
         }
         public ApplicationViewModel(IDialogService dialogService, IFileService fileService)
         {

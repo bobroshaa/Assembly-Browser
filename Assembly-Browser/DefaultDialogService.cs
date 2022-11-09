@@ -3,7 +3,7 @@ using Microsoft.Win32;
 
 namespace Assembly_Browser
 {
-    public class DefaultDialogService
+    public class DefaultDialogService : IDialogService
     {
         public string FilePath { get; set; }
 

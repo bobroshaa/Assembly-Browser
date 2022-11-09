@@ -8,6 +8,7 @@
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ApplicationViewModel(new DefaultDialogService(), new AssemblyFileService());
         }
     }
 }

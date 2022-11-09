@@ -6,9 +6,29 @@
         xmlns:local="clr-namespace:Assembly_Browser"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>  
+        <local:ApplicationViewModel/>  
+    </Window.DataContext> 
     <Grid x:Name="Grid">
-        <Button x:Name="ButtonChoose"  Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20" Content="Выбрать сборку" />
+        <Button x:Name="ButtonChoose" Command="{Binding OpenCommand}"  Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20" Content="Выбрать сборку" />
         <Button x:Name="ButtonClear"  Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 60" Content="Очистить" />
-        <TreeView x:Name="TreeView" Width="370" Height="310" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20"></TreeView>
+        <TreeView x:Name="TreeView" Width="370" Height="310" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" ItemsSource="{Binding assemblyBrowser}">
+            <TreeView.ItemTemplate>  
+                <HierarchicalDataTemplate ItemsSource="{Binding}" DataType="{x:Type local:}">  
+                        <Label Content="{Binding TypeName}"/>  
+                        <HierarchicalDataTemplate.ItemTemplate>  
+                            <HierarchicalDataTemplate ItemsSource="{Binding Employees}" DataType="{x:Type VM:Position}">  
+                                <Label Content="{Binding PositionName}"/>  
+                                <HierarchicalDataTemplate.ItemTemplate>  
+                                    <DataTemplate DataType="{x:Type VM:Employee}">  
+                                        <Label Content="{Binding EmployeeName}"/>  
+                                    </DataTemplate>  
+                                </HierarchicalDataTemplate.ItemTemplate>  
+                            </HierarchicalDataTemplate>  
+                        </HierarchicalDataTemplate.ItemTemplate>  
+                    </HierarchicalDataTemplate>  
+                </TreeView.ItemTemplate>  
+            </TreeView>  
+        </TreeView>
     </Grid>
 </Window>
