@@ -6,7 +6,6 @@ C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\Assembly-Browser.csproj.AssemblyReference.cache
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\Assembly-Browser_MarkupCompile.cache
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\Assembly-Browser_MarkupCompile.lref
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\MainWindow.baml
@@ -20,3 +19,4 @@ C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\Assembly-Browser.pdb
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\Assembly-Browser.genruntimeconfig.cache
 C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\ref\Assembly-Browser.dll
+C:\Users\bobro\RiderProjects\Assembly-Browser\Assembly-Browser\Assembly-Browser\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs

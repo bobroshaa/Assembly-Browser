@@ -7,21 +7,21 @@
         xmlns:self="clr-namespace:Assembly_Browser" xmlns:viewmodels="clr-namespace:Assembly_Browser"
         d:DataContext="{d:DesignInstance Type=viewmodels:ApplicationViewModel}"
         mc:Ignorable="d"
-        Title="Броузер сборок" Height="350" Width="525">
+        Title="Броузер сборок" Height="480" Width="640">
     <Grid>
         <Button Command="{Binding OpenCommand}" Width="100" Height="30"
                 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20" Content="Выбрать сборку" />
-        <Button Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="20 60" Content="Очистить" />
-        <TreeView Width="370" Height="310" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch"
-                  ItemsSource="{Binding Browser.Types}">
-            <HierarchicalDataTemplate ItemsSource="{Binding Children}"
-                                      DataType="{x:Type self:HierarchicalAssemblyUnit}">
-                <TextBlock Text="{Binding Name}" />
-            </HierarchicalDataTemplate>
-            <DataTemplate DataType="{x:Type self:NonHierarchicalAssemblyUnit}">
-                <TextBlock Text="{Binding Name}" />
-            </DataTemplate>
+        <TreeView Width="480" Height="400" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top"
+                  ItemsSource="{Binding Browser.Namespaces}">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}"
+                                          DataType="{x:Type self:HierarchicalAssemblyUnit}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type self:NonHierarchicalAssemblyUnit}">
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </TreeView.Resources>
         </TreeView>
     </Grid>
 </Window>

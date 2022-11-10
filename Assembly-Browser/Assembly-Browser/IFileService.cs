@@ -5,6 +5,6 @@ namespace Assembly_Browser
 {
     public interface IFileService
     {
-        ObservableCollection<IAssemblyUnit> Open(string filename);
+        ObservableCollection<HierarchicalAssemblyUnit> Open(string filename);
     }
 }

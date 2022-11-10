@@ -35,7 +35,7 @@ namespace Assembly_Browser
                                {
                                    Browser = new AssemblyBrowser
                                    {
-                                       Types = _fileService.Open(_dialogService.FilePath)
+                                       Namespaces = _fileService.Open(_dialogService.FilePath)
                                    };
                                }
                            }
