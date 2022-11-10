@@ -1,11 +1,87 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Interfaces.dll": {}
+        }
+      },
+      "Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Model.dll": {}
+        }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Interfaces": "1.0.0",
+          "Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
+      },
+      "ViewModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Interfaces": "1.0.0",
+          "Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ViewModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ViewModel.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Interfaces/Interfaces.csproj",
+      "msbuildProject": "../Interfaces/Interfaces.csproj"
+    },
+    "Model/1.0.0": {
+      "type": "project",
+      "path": "../Model/Model.csproj",
+      "msbuildProject": "../Model/Model.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
+    },
+    "ViewModel/1.0.0": {
+      "type": "project",
+      "path": "../ViewModel/ViewModel.csproj",
+      "msbuildProject": "../ViewModel/ViewModel.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "Services >= 1.0.0",
+      "ViewModel >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\bobro\\.nuget\\packages\\": {},
@@ -38,7 +114,14 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\bobro\\RiderProjects\\Assembly-Browser\\Assembly-Browser\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\bobro\\RiderProjects\\Assembly-Browser\\Assembly-Browser\\Services\\Services.csproj"
+            },
+            "C:\\Users\\bobro\\RiderProjects\\Assembly-Browser\\Assembly-Browser\\ViewModel\\ViewModel.csproj": {
+              "projectPath": "C:\\Users\\bobro\\RiderProjects\\Assembly-Browser\\Assembly-Browser\\ViewModel\\ViewModel.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

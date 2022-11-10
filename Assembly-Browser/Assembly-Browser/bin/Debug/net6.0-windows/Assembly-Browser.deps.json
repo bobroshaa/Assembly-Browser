@@ -7,14 +7,69 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "Assembly-Browser/1.0.0": {
+        "dependencies": {
+          "Services": "1.0.0",
+          "ViewModel": "1.0.0"
+        },
         "runtime": {
           "Assembly-Browser.dll": {}
+        }
+      },
+      "Interfaces/1.0.0": {
+        "runtime": {
+          "Interfaces.dll": {}
+        }
+      },
+      "Model/1.0.0": {
+        "dependencies": {
+          "Interfaces": "1.0.0"
+        },
+        "runtime": {
+          "Model.dll": {}
+        }
+      },
+      "Services/1.0.0": {
+        "dependencies": {
+          "Interfaces": "1.0.0",
+          "Model": "1.0.0"
+        },
+        "runtime": {
+          "Services.dll": {}
+        }
+      },
+      "ViewModel/1.0.0": {
+        "dependencies": {
+          "Interfaces": "1.0.0",
+          "Model": "1.0.0"
+        },
+        "runtime": {
+          "ViewModel.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Assembly-Browser/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ViewModel/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

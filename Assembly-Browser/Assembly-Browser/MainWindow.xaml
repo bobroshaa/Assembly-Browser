@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Assembly_Browser"
-        xmlns:self="clr-namespace:Assembly_Browser" xmlns:viewmodels="clr-namespace:Assembly_Browser"
-        d:DataContext="{d:DesignInstance Type=viewmodels:ApplicationViewModel}"
+        xmlns:model="clr-namespace:Model;assembly=Model"
+        xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewModel:ApplicationViewModel}"
         mc:Ignorable="d"
         Title="Броузер сборок" Height="480" Width="640">
     <Grid>
@@ -15,10 +15,10 @@
                   ItemsSource="{Binding Browser.Namespaces}">
             <TreeView.Resources>
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}"
-                                          DataType="{x:Type self:HierarchicalAssemblyUnit}">
+                                          DataType="{x:Type model:HierarchicalAssemblyUnit}">
                     <TextBlock Text="{Binding Name}" />
                 </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type self:NonHierarchicalAssemblyUnit}">
+                <DataTemplate DataType="{x:Type model:NonHierarchicalAssemblyUnit}">
                     <TextBlock Text="{Binding Name}" />
                 </DataTemplate>
             </TreeView.Resources>

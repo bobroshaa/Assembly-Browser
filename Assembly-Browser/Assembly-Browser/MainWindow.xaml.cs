@@ -1,4 +1,7 @@
-﻿namespace Assembly_Browser
+﻿using Services;
+using ViewModel;
+
+namespace Assembly_Browser
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
