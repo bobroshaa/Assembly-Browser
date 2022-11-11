@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Interfaces;
 using Model;
 
@@ -10,7 +12,8 @@ namespace Services
         public ObservableCollection<IAssemblyUnit> Open(string filename)
         {
             Assembly assembly  = Assembly.LoadFrom(filename);
-            Type[] types = assembly.GetTypes();
+            List<Type> types = assembly.GetTypes().ToList();
+            Dictionary<string, List<string>> extensionMethods = new Dictionary<string, List<string>>();
             var nodes = new ObservableCollection<IAssemblyUnit>();
             foreach (var type in types)
             {
@@ -28,27 +31,35 @@ namespace Services
                 MethodInfo[] methods = type.GetMethods();
                 foreach (var method in methods)
                 {
-                    var signature = "(";
-                    ParameterInfo[] parameters = method.GetParameters();
-                    for (int i = 0; i < parameters.Length; i++)
-                    {
-                        var param = parameters[i];
-                        string modificator = "";
-                        if (param.IsIn) modificator = "in";
-                        else if (param.IsOut) modificator = "out";
- 
-                        signature +=($"{param.ParameterType.Name} {modificator} {param.Name}");
-                        if (param.HasDefaultValue) signature +=($"={param.DefaultValue}");
-                        if (i < parameters.Length - 1) signature +=(", ");
+                    if (method.IsDefined(typeof(ExtensionAttribute), false))
+                    { 
+                        if (extensionMethods.ContainsKey(method.GetParameters()[0].ParameterType.Name))
+                            extensionMethods[method.GetParameters()[0].ParameterType.Name].Add("EXT: " + method.ToString());
+                        else
+                        {
+                            extensionMethods.TryAdd(method.GetParameters()[0].ParameterType.Name, new List<string>(){"★EXT: " + method.ToString()});
+                        }
                     }
-
-                    signature += ")";
-                    node.Children.Add(new NonHierarchicalAssemblyUnit{Name = method.ReturnType.Name + " " + method.Name + signature});
+                        
+                    else
+                        node.Children.Add(new NonHierarchicalAssemblyUnit{Name = method.ToString()});
                 }
                 nodes.Add(node);
             }
             var root = new ObservableCollection<IAssemblyUnit>();
-            root.Add(new HierarchicalAssemblyUnit{Name = types[types.Length - 1].Namespace, Children = nodes});
+            foreach (var className in extensionMethods.Keys)
+            {
+                foreach (var node in nodes)
+                {
+                    if (node.Name == className)
+                        foreach (var method in extensionMethods[className])
+                        {
+                            ((HierarchicalAssemblyUnit)node).Children.Add(new NonHierarchicalAssemblyUnit
+                                { Name = method });
+                        }
+                }
+            }
+            root.Add(new HierarchicalAssemblyUnit{Name = types[types.Count - 1].Namespace, Children = nodes});
             return root;
         }
     }
