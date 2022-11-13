@@ -52,12 +52,26 @@ namespace Services
                 foreach (var node in nodes)
                 {
                     if (node.Name == className)
+                    {
                         foreach (var method in extensionMethods[className])
                         {
                             ((HierarchicalAssemblyUnit)node).Children.Add(new NonHierarchicalAssemblyUnit
                                 { Name = method });
+                            extensionMethods.Remove(className);
                         }
+                    }
                 }
+            }
+
+            foreach (var className in extensionMethods.Keys)
+            {
+                var tempNode = new HierarchicalAssemblyUnit{Name = className};
+                foreach (var method in extensionMethods[className])
+                {
+                    tempNode.Children.Add(new NonHierarchicalAssemblyUnit 
+                        { Name = method });
+                }
+                nodes.Add(tempNode);
             }
             root.Add(new HierarchicalAssemblyUnit{Name = types[types.Count - 1].Namespace, Children = nodes});
             return root;
